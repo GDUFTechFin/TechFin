@@ -46,13 +46,13 @@
 /* ******************************
 :: 2.0 IMPORT ALL CSS
 ****************************** */
-@import url(bootstrap.min.css);
-@import url(all.min.css);
+@import url(bootstrap.css);
+@import url(all.css);
 @import url(../font/flaticon.css);
-@import url(animate.min.css);
+@import url(animate.css);
 @import url(aos.css);
-@import url(owl.carousel.min.css);
-@import url(jquery.fancybox.min.css);
+@import url(owl.carousel.css);
+@import url(jquery.fancybox.css);
 
 /* ******************************
 :: 3.0 GLOBAL CSS
