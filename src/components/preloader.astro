@@ -1,48 +1,142 @@
 <!--====== Preloader Area Start ======-->
-	<div id="preloader">
-		<!-- DigitalScoop Preloader -->
-		<div id="digitalscoop-preloader" class="digitalscoop-preloader">
-			<!-- Preloader Animation -->
-			<div class="preloader-animation">
-				<!-- Spinner -->
-				<div class="spinner"></div>
-				<!-- Loader -->
-				<div class="loader">
-					<span data-text-preloader="D" class="animated-letters">加</span>
-					<span data-text-preloader="I" class="animated-letters">载</span>
-					<span data-text-preloader="G" class="animated-letters">中</span>
-					<span data-text-preloader="I" class="animated-letters">.</span>
-					<span data-text-preloader="T" class="animated-letters">.</span>
-					<span data-text-preloader="A" class="animated-letters">.</span>
-					<span data-text-preloader="L" class="animated-letters">.</span>
-					<span data-text-preloader="S" class="animated-letters">.</span>
-					<span data-text-preloader="C" class="animated-letters">.</span>
-					<span data-text-preloader="O" class="animated-letters">.</span>
-					<!-- <span data-text-preloader="O" class="animated-letters">O</span>
-					<span data-text-preloader="P" class="animated-letters">P</span> -->
-				</div>
-				<p class="fw-5 text-center text-uppercase">Loading</p>
-			</div>
-			<!-- Loader Animation -->
-			<div class="loader-animation">
-				<div class="row h-100">
-					<!-- Single Loader -->
-					<div class="col-3 single-loader p-0">
-						<div class="loader-bg"></div>
-					</div>
-					<!-- Single Loader -->
-					<div class="col-3 single-loader p-0">
-						<div class="loader-bg"></div>
-					</div>
-					<!-- Single Loader -->
-					<div class="col-3 single-loader p-0">
-						<div class="loader-bg"></div>
-					</div>
-					<!-- Single Loader -->
-					<div class="col-3 single-loader p-0">
-						<div class="loader-bg"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<div id="preloader">
+  <!-- DigitalScoop Preloader -->
+  <div id="digitalscoop-preloader" class="digitalscoop-preloader">
+    <!-- Preloader Animation -->
+    <div class="preloader-animation">
+      <!-- Spinner -->
+      <div class="spinner"></div>
+      <!-- Loader -->
+      <div class="loader">
+        <span data-text-preloader="加" class="animated-letters">加</span>
+        <span data-text-preloader="载" class="animated-letters">载</span>
+        <span data-text-preloader="中" class="animated-letters">中</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+        <span data-text-preloader="." class="animated-letters">.</span>
+      </div>
+      <p class="fw-5 text-center text-uppercase">Loading</p>
+    </div>
+    <!-- Loader Animation -->
+    <div class="loader-animation">
+      <div class="row-container">
+        <!-- Single Loader -->
+        <div class="single-loader">
+          <div class="loader-bg"></div>
+        </div>
+        <!-- Single Loader -->
+        <div class="single-loader">
+          <div class="loader-bg"></div>
+        </div>
+        <!-- Single Loader -->
+        <div class="single-loader">
+          <div class="loader-bg"></div>
+        </div>
+        <!-- Single Loader -->
+        <div class="single-loader">
+          <div class="loader-bg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 百叶窗加载动画容器 */
+  .loader-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    overflow: hidden;
+  }
+
+  /* 使用flexbox创建四个等宽列 */
+  .row-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* 单个百叶窗条 */
+  .single-loader {
+    flex: 1; /* 每个条占25%宽度 */
+    position: relative;
+    height: 100%;
+  }
+
+  .loader-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transform-origin: left; /* 修改变换原点到左侧 */
+  }
+
+  /* 百叶窗动画 - 依次向左关闭效果 */
+  .single-loader:nth-child(1) .loader-bg {
+    animation: shutterCloseLeft 1.2s 0.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .single-loader:nth-child(2) .loader-bg {
+    animation: shutterCloseLeft 1.2s 0.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .single-loader:nth-child(3) .loader-bg {
+    animation: shutterCloseLeft 1.2s 0.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  .single-loader:nth-child(4) .loader-bg {
+    animation: shutterCloseLeft 1.2s 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+
+  /* 百叶窗向左关闭动画 */
+  @keyframes shutterCloseLeft {
+    0% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+  }
+
+  /* 预加载器整体隐藏动画 */
+  #preloader.loaded {
+    pointer-events: none;
+  }
+
+  #preloader.loaded .loader-animation {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  #preloader.loaded .preloader-animation {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+</style>
+
+<script>
+  // 页面加载完成后触发动画
+  document.addEventListener('DOMContentLoaded', function() {
+    // 模拟加载时间 - 实际项目中可以结合页面加载状态
+    setTimeout(function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.classList.add('loaded');
+      }
+    }, 2500); // 2.5秒后执行百叶窗关闭动画
+  });
+</script>
