@@ -1,0 +1,441 @@
+<div class="news-carousel-area ptb_100">
+    <!-- Shape Top -->
+    <div class="shape shape-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" fill="#FFFFFF">
+            <!-- 这个是背景波浪图形,上面那部分 -->
+            <path class="shape-fill" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
+                c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
+                c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"></path>
+        </svg>
+    </div>
+    
+    <div class="container">
+        <div class="section-heading text-center mb-5">
+            <h2>新闻资讯</h2>
+            <p>最新政策、县域动态和科技金融新闻</p>
+        </div>
+
+        <div class="row">
+            <!-- 政策速递轮播 -->
+            <div class="col-12 mb-4">
+                <div class="news-category-title mb-3">
+                    <h3 class="text-center">政策速递</h3>
+                </div>
+                <div class="news-carousel policy-carousel position-relative">
+                    <div class="news-item-container d-flex align-items-center">
+                        {
+                            [
+                                {
+                                    title: "关于支持科技金融发展的若干政策措施",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "为促进科技与金融深度融合，支持科技创新企业发展，制定了一系列扶持政策。",
+                                    link: "/news/policy/1"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布1",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/2"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布2",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/3"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布3",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/4"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布4",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/5"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布5",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/6"
+                                },
+                                {
+                                    title: "县域经济振兴发展指导意见发布6",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "国家发布关于推动县域经济高质量发展的指导意见，明确支持措施和发展方向。",
+                                    link: "/news/policy/7"
+                                },
+                                {
+                                    title: "数字普惠金融发展实施方案",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "实施方案旨在扩大数字普惠金融覆盖面，提升金融服务县域经济能力。",
+                                    link: "/news/policy/8"
+                                },
+                            ].map((item, index) => (
+                                <div class={`news-item ${index === 0 ? 'd-block' : 'd-none'} w-100`} key={index}>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <a href={item.link}>
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    class="img-fluid rounded"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <a href={item.link} class="news-link">
+                                                <h4 class="mt-2">{item.title}</h4>
+                                                <p class="text-muted">{item.summary}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        <div class="carousel-nav ms-3 d-flex flex-column">
+                            <button class="carousel-prev btn btn-primary mb-2" onclick="changeNews('policy', -1)">↑</button>
+                            <button class="carousel-next btn btn-primary" onclick="changeNews('policy', 1)">↓</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 县域动态轮播 -->
+            <div class="col-12 mb-4">
+                <div class="news-category-title mb-3">
+                    <h3 class="text-center">县域动态</h3>
+                </div>
+                <div class="news-carousel county-carousel position-relative">
+                    <div class="news-item-container d-flex align-items-center">
+                        {
+                            [
+                                {
+                                    title: "某县成功举办科技金融对接会",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "本次对接会吸引了50余家科技企业和10余家金融机构参与，达成合作意向15项。",
+                                    link: "/news/county/1"
+                                },
+                                {
+                                    title: "县域特色产业数字化转型加速",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "通过数字化手段，该县传统特色产业实现了生产效率和市场竞争力的双提升。",
+                                    link: "/news/county/2"
+                                },
+                                {
+                                    title: "乡村振兴金融服务中心正式成立",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "服务中心将为当地农户和小微企业提供便捷的金融服务和金融产品。",
+                                    link: "/news/county/3"
+                                },
+                            ].map((item, index) => (
+                                <div class={`news-item ${index === 0 ? 'd-block' : 'd-none'} w-100`} key={index}>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <a href={item.link}>
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    class="img-fluid rounded"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <a href={item.link} class="news-link">
+                                                <h4 class="mt-2">{item.title}</h4>
+                                                <p class="text-muted">{item.summary}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        <div class="carousel-nav ms-3 d-flex flex-column">
+                            <button class="carousel-prev btn btn-primary mb-2" onclick="changeNews('county', -1)">↑</button>
+                            <button class="carousel-next btn btn-primary" onclick="changeNews('county', 1)">↓</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 科技金融新闻轮播 -->
+            <div class="col-12 mb-4">
+                <div class="news-category-title mb-3">
+                    <h3 class="text-center">科技金融新闻</h3>
+                </div>
+                <div class="news-carousel fintech-carousel position-relative">
+                    <div class="news-item-container d-flex align-items-center">
+                        {
+                            [
+                                {
+                                    title: "区块链技术在供应链金融中的应用",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "多家银行开始探索区块链技术在供应链金融领域的应用，提升风控能力。",
+                                    link: "/news/fintech/1"
+                                },
+                                {
+                                    title: "人工智能助力小微企业信贷审批",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "AI技术的应用使小微企业贷款审批时间缩短了70%，提高了金融服务效率。",
+                                    link: "/news/fintech/2"
+                                },
+                                {
+                                    title: "数字人民币试点范围进一步扩大",
+                                    image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+                                    summary:
+                                        "数字人民币试点已覆盖全国多个城市，为县域经济数字化发展提供支持。",
+                                    link: "/news/fintech/3"
+                                },
+                            ].map((item, index) => (
+                                <div class={`news-item ${index === 0 ? 'd-block' : 'd-none'} w-100`} key={index}>
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4">
+                                            <a href={item.link}>
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.title}
+                                                    class="img-fluid rounded"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <a href={item.link} class="news-link">
+                                                <h4 class="mt-2">{item.title}</h4>
+                                                <p class="text-muted">{item.summary}</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                        <div class="carousel-nav ms-3 d-flex flex-column">
+                            <button class="carousel-prev btn btn-primary mb-2" onclick="changeNews('fintech', -1)">↑</button>
+                            <button class="carousel-next btn btn-primary" onclick="changeNews('fintech', 1)">↓</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .news-carousel-area {
+        background-color: #f8f9fa;
+        position: relative;
+    }
+
+    .news-category-title h3 {
+        color: #0449c4;
+        border-bottom: 2px solid #0449c4;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .news-item {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .news-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .news-item img {
+        height: 150px;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .news-item h4 {
+        font-size: 1.2rem;
+        margin: 10px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .news-item p {
+        font-size: 0.9rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .carousel-nav {
+        z-index: 10;
+        position: relative;
+        flex: 0 0 auto;
+    }
+    
+    .news-item.fade-out {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    
+    .news-item.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .news-item-container {
+        position: relative;
+    }
+    
+    .btn,
+    .btn:active,
+    .btn.btn-bordered:before,
+    .btn.btn-bordered-white:after {
+        background: rgb(179, 179, 179);
+        border-radius: 10px;
+        margin-left: 1vw;
+    }
+    
+    .news-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .news-link:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    /* 波浪形状样式 */
+    .shape {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        line-height: 0;
+        direction: ltr;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .shape-top {
+        top: -1px;
+    }
+
+    .shape-top svg {
+        display: block;
+        width: calc(122% + 1.3px);
+        height: 134px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+
+<script>
+    // 轮播功能实现
+    document.addEventListener("DOMContentLoaded", function () {
+        const carousels = {
+            policy: {
+                items: document.querySelectorAll('.policy-carousel .news-item'),
+                currentIndex: 0,
+                total: document.querySelectorAll('.policy-carousel .news-item').length
+            },
+            county: {
+                items: document.querySelectorAll('.county-carousel .news-item'),
+                currentIndex: 0,
+                total: document.querySelectorAll('.county-carousel .news-item').length
+            },
+            fintech: {
+                items: document.querySelectorAll('.fintech-carousel .news-item'),
+                currentIndex: 0,
+                total: document.querySelectorAll('.fintech-carousel .news-item').length
+            }
+        };
+
+        // 为每个轮播设置自动播放
+        Object.keys(carousels).forEach(type => {
+            setInterval(() => {
+                showNextItem(type);
+            }, 5000);
+        });
+
+        // 全局函数用于改变新闻
+        window.changeNews = function(type, direction) {
+            const carousel = carousels[type];
+            const prevIndex = carousel.currentIndex;
+            carousel.currentIndex = (carousel.currentIndex + direction + carousel.total) % carousel.total;
+            
+            // 添加淡出动画
+            carousel.items[prevIndex].classList.add('fade-out');
+            
+            setTimeout(() => {
+                // 隐藏所有项目
+                carousel.items.forEach(item => {
+                    item.classList.remove('d-block', 'd-none', 'fade-out', 'fade-in');
+                    item.classList.add('d-none');
+                });
+                
+                // 显示当前项目
+                carousel.items[carousel.currentIndex].classList.remove('d-none');
+                carousel.items[carousel.currentIndex].classList.add('d-block', 'fade-in');
+                
+                // 移除动画类
+                setTimeout(() => {
+                    carousel.items[carousel.currentIndex].classList.remove('fade-in');
+                }, 300);
+            }, 300);
+        };
+
+        // 显示下一项
+        function showNextItem(type) {
+            const carousel = carousels[type];
+            const prevIndex = carousel.currentIndex;
+            carousel.currentIndex = (carousel.currentIndex + 1) % carousel.total;
+            
+            // 添加淡出动画
+            carousel.items[prevIndex].classList.add('fade-out');
+            
+            setTimeout(() => {
+                // 隐藏所有项目
+                carousel.items.forEach(item => {
+                    item.classList.remove('d-block', 'd-none', 'fade-out', 'fade-in');
+                    item.classList.add('d-none');
+                });
+                
+                // 显示当前项目
+                carousel.items[carousel.currentIndex].classList.remove('d-none');
+                carousel.items[carousel.currentIndex].classList.add('d-block', 'fade-in');
+                
+                // 移除动画类
+                setTimeout(() => {
+                    carousel.items[carousel.currentIndex].classList.remove('fade-in');
+                }, 300);
+            }, 300);
+        }
+        
+        // 初始化：为第一个项目添加显示类
+        Object.keys(carousels).forEach(type => {
+            const carousel = carousels[type];
+            if (carousel.items.length > 0) {
+                carousel.items[0].classList.add('d-block');
+            }
+        });
+    });
+</script>
