@@ -2991,3 +2991,24 @@ body.dark,
 .rtl .grad-hover::before {
   background: linear-gradient(135deg, #f22f1d 0%, #f28705 100%);
 }
+
+.mb-2{
+  font-size: 130%;
+}
+
+.mb-0{
+  font-size: 1.5vw;
+}
+
+
+.h-100{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blank-space{
+  height: 13vw;
+  width: 100%;
+}
+
