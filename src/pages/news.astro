@@ -4,6 +4,386 @@ import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import Preloader from "../components/preloader.astro";
 import PageTitle from "../components/pageTitle.astro";
+
+// 新闻假数据
+const newsData = [
+    {
+        id: 1,
+        title: "全球经济复苏势头强劲，多国GDP增长超预期",
+        summary: "国际货币基金组织发布最新报告，预计今年全球经济将实现强劲增长",
+        category: "综合新闻",
+        date: "2025-06-15",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/1",
+    },
+    {
+        id: 2,
+        title: "央行发布新货币政策，助力中小企业融资",
+        summary: "中国人民银行宣布下调存款准备金率，释放长期资金",
+        category: "政策发布与解读",
+        date: "2023-06-14",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/2",
+    },
+    {
+        id: 3,
+        title: "数字化转型加速，科技企业投资创新力度加大",
+        summary: "全球科技公司纷纷加大在人工智能、云计算领域的投入",
+        category: "综合新闻",
+        date: "2023-06-13",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/3",
+    },
+    {
+        id: 4,
+        title: "新税收优惠政策正式实施，惠及小微企业",
+        summary: "财政部、税务总局联合发布文件，进一步减轻小微企业税负",
+        category: "政策发布与解读",
+        date: "2023-06-12",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/4",
+    },
+    {
+        id: 5,
+        title: "金融科技峰会圆满落幕，行业前景备受关注",
+        summary:
+            "为期三天的金融科技峰会吸引了全球数百家企业的参与，共同探讨未来发展趋势",
+        category: "综合新闻",
+        date: "2023-06-11",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/5",
+    },
+    {
+        id: 6,
+        title: "银保监会发布银行数字化转型指导意见",
+        summary:
+            "银保监会近日发布《关于银行业保险业数字化转型的指导意见》，要求金融机构加快数字化转型步伐",
+        category: "政策发布与解读",
+        date: "2023-06-10",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/6",
+    },
+    {
+        id: 7,
+        title: "区块链技术在供应链金融领域应用取得突破",
+        summary:
+            "多家银行与科技公司合作，成功将区块链技术应用于供应链金融，有效提升了交易效率和安全性",
+        category: "综合新闻",
+        date: "2023-06-09",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/7",
+    },
+    {
+        id: 8,
+        title: "数字人民币试点城市扩大至30个",
+        summary:
+            "中国人民银行宣布将数字人民币试点城市从目前的10个扩大至30个，进一步推进数字货币应用",
+        category: "政策发布与解读",
+        date: "2023-06-08",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/8",
+    },
+    {
+        id: 9,
+        title: "人工智能助力风险控制，多家银行实现智能化转型",
+        summary:
+            "通过引入人工智能技术，银行在风险控制、客户识别等方面实现了显著提升",
+        category: "综合新闻",
+        date: "2023-06-07",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/9",
+    },
+    {
+        id: 10,
+        title: "金融数据安全管理办法正式出台",
+        summary:
+            "为加强金融数据安全管理，央行联合多部门发布《金融数据安全管理办法》，规范数据使用流程",
+        category: "政策发布与解读",
+        date: "2023-06-06",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/10",
+    },
+    {
+        id: 11,
+        title: "绿色金融发展势头良好，ESG投资理念深入人心",
+        summary:
+            "随着环保意识的增强，绿色金融产品日益受到投资者青睐，ESG投资理念逐步普及",
+        category: "综合新闻",
+        date: "2023-06-05",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/11",
+    },
+    {
+        id: 12,
+        title: "互联网金融监管新规正式实施",
+        summary:
+            "为规范互联网金融发展，监管部门发布了一系列新规定，对平台运营、资金管理等方面提出更高要求",
+        category: "政策发布与解读",
+        date: "2023-06-04",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/12",
+    },
+    {
+        id: 13,
+        title: "跨境支付技术革新，人民币国际化进程加速",
+        summary:
+            "新技术的应用使得跨境支付更加便捷，人民币在国际支付中的使用比例持续上升",
+        category: "综合新闻",
+        date: "2023-06-03",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/13",
+    },
+    {
+        id: 14,
+        title: "金融消费者权益保护条例修订完成",
+        summary:
+            "为更好保护金融消费者权益，相关部门对现有条例进行了修订，增加了更多保护措施",
+        category: "政策发布与解读",
+        date: "2023-06-02",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/14",
+    },
+    {
+        id: 15,
+        title: "数字银行服务创新，用户体验持续提升",
+        summary:
+            "多家银行推出全新数字银行服务，通过技术创新为客户提供更便捷、安全的金融服务",
+        category: "综合新闻",
+        date: "2023-06-01",
+        image: "https://blog.ayeez.cn/imgs/bg/bg.jpg",
+        link: "/news/15",
+    },
+];
+
+// 活动通知假数据
+const eventNoticesData = [
+    {
+        id: 1,
+        title: "金融科技创新培训",
+        summary: "关于2024年第一季度金融科技前沿技术培训活动通知",
+        category: "培训",
+        date: "2024-01-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_1.jpg",
+        link: "/event/1"
+    },
+    {
+        id: 2,
+        title: "数字支付发展路演",
+        summary: "最新数字支付技术发展成果展示与路演活动",
+        category: "路演",
+        date: "2024-01-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_2.jpg",
+        link: "/event/2"
+    },
+    {
+        id: 3,
+        title: "金融监管政策论坛",
+        summary: "关于最新金融监管政策解读的专家论坛活动",
+        category: "论坛",
+        date: "2024-01-25",
+        image: "/assets/img/case_studies/case_studies_1/thumb_3.jpg",
+        link: "/event/3"
+    },
+    {
+        id: 4,
+        title: "区块链技术培训",
+        summary: "区块链在金融领域的应用培训课程",
+        category: "培训",
+        date: "2024-02-05",
+        image: "/assets/img/case_studies/case_studies_1/thumb_4.jpg",
+        link: "/event/4"
+    },
+    {
+        id: 5,
+        title: "AI风控系统路演",
+        summary: "人工智能风控系统产品展示与体验活动",
+        category: "路演",
+        date: "2024-02-10",
+        image: "/assets/img/case_studies/case_studies_1/thumb_5.jpg",
+        link: "/event/5"
+    },
+    {
+        id: 6,
+        title: "数字货币发展论坛",
+        summary: "数字货币未来发展趋势专家论坛",
+        category: "论坛",
+        date: "2024-02-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_6.jpg",
+        link: "/event/6"
+    },
+    {
+        id: 7,
+        title: "普惠金融政策解读培训",
+        summary: "关于最新普惠金融政策的详细解读与实操培训",
+        category: "培训",
+        date: "2024-03-01",
+        image: "/assets/img/case_studies/case_studies_1/thumb_1.jpg",
+        link: "/event/7"
+    },
+    {
+        id: 8,
+        title: "绿色金融产品路演",
+        summary: "绿色金融创新产品展示与推广活动",
+        category: "路演",
+        date: "2024-03-05",
+        image: "/assets/img/case_studies/case_studies_1/thumb_2.jpg",
+        link: "/event/8"
+    },
+    {
+        id: 9,
+        title: "国际金融合作论坛",
+        summary: "探讨国际金融合作新机遇的高端论坛",
+        category: "论坛",
+        date: "2024-03-10",
+        image: "/assets/img/case_studies/case_studies_1/thumb_3.jpg",
+        link: "/event/9"
+    },
+    {
+        id: 10,
+        title: "数字银行运营培训",
+        summary: "数字银行运营策略与风险管理培训课程",
+        category: "培训",
+        date: "2024-03-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_4.jpg",
+        link: "/event/10"
+    },
+    {
+        id: 11,
+        title: "供应链金融创新路演",
+        summary: "供应链金融创新解决方案展示活动",
+        category: "路演",
+        date: "2024-03-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_5.jpg",
+        link: "/event/11"
+    },
+    {
+        id: 12,
+        title: "金融科技创新论坛",
+        summary: "金融科技发展前沿与未来趋势论坛",
+        category: "论坛",
+        date: "2024-03-25",
+        image: "/assets/img/case_studies/case_studies_1/thumb_6.jpg",
+        link: "/event/12"
+    }
+];
+
+// 活动精彩回顾假数据
+const eventRecapData = [
+    {
+        id: 1,
+        title: "金融科技峰会精彩回顾",
+        summary: "回顾2023年度金融科技峰会精彩瞬间与重要成果",
+        category: "培训",
+        date: "2023-12-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_1.jpg",
+        link: "/recap/1"
+    },
+    {
+        id: 2,
+        title: "数字支付创新路演回顾",
+        summary: "回顾数字支付创新产品路演活动精彩时刻",
+        category: "路演",
+        date: "2023-12-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_2.jpg",
+        link: "/recap/2"
+    },
+    {
+        id: 3,
+        title: "金融政策解读论坛回顾",
+        summary: "回顾金融政策解读专家论坛的精彩讨论",
+        category: "论坛",
+        date: "2023-12-10",
+        image: "/assets/img/case_studies/case_studies_1/thumb_3.jpg",
+        link: "/recap/3"
+    },
+    {
+        id: 4,
+        title: "区块链培训课程回顾",
+        summary: "区块链技术培训课程成果与反馈回顾",
+        category: "培训",
+        date: "2023-11-25",
+        image: "/assets/img/case_studies/case_studies_1/thumb_4.jpg",
+        link: "/recap/4"
+    },
+    {
+        id: 5,
+        title: "AI金融产品路演回顾",
+        summary: "AI金融产品路演活动成果总结",
+        category: "路演",
+        date: "2023-11-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_5.jpg",
+        link: "/recap/5"
+    },
+    {
+        id: 6,
+        title: "数字金融论坛精彩回顾",
+        summary: "数字金融论坛专家观点精华回顾",
+        category: "论坛",
+        date: "2023-11-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_6.jpg",
+        link: "/recap/6"
+    },
+    {
+        id: 7,
+        title: "普惠金融培训课程回顾",
+        summary: "普惠金融政策培训课程成果回顾",
+        category: "培训",
+        date: "2023-10-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_1.jpg",
+        link: "/recap/7"
+    },
+    {
+        id: 8,
+        title: "绿色金融产品路演回顾",
+        summary: "绿色金融创新产品路演活动精彩回顾",
+        category: "路演",
+        date: "2023-10-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_2.jpg",
+        link: "/recap/8"
+    },
+    {
+        id: 9,
+        title: "国际金融合作论坛回顾",
+        summary: "国际金融合作论坛专家观点回顾",
+        category: "论坛",
+        date: "2023-10-10",
+        image: "/assets/img/case_studies/case_studies_1/thumb_3.jpg",
+        link: "/recap/9"
+    },
+    {
+        id: 10,
+        title: "数字银行培训课程回顾",
+        summary: "数字银行运营培训课程成果总结",
+        category: "培训",
+        date: "2023-09-25",
+        image: "/assets/img/case_studies/case_studies_1/thumb_4.jpg",
+        link: "/recap/10"
+    },
+    {
+        id: 11,
+        title: "供应链金融路演回顾",
+        summary: "供应链金融创新解决方案路演活动回顾",
+        category: "路演",
+        date: "2023-09-20",
+        image: "/assets/img/case_studies/case_studies_1/thumb_5.jpg",
+        link: "/recap/11"
+    },
+    {
+        id: 12,
+        title: "金融科技创新论坛回顾",
+        summary: "金融科技发展前沿论坛精彩观点回顾",
+        category: "论坛",
+        date: "2023-09-15",
+        image: "/assets/img/case_studies/case_studies_1/thumb_6.jpg",
+        link: "/recap/12"
+    }
+];
+
+// 合并所有活动数据 
+const allEvents = [
+    ...eventNoticesData.map(item => ({...item, type: "通知"})),
+    ...eventRecapData.map(item => ({...item, type: "回顾"}))
+];
 ---
 
 <Layout
@@ -13,7 +393,7 @@ import PageTitle from "../components/pageTitle.astro";
     <Header />
 
     <!-- 加载动画 -->
-     <Preloader />
+    <Preloader />
 
     <!--====== 滚动到顶部按钮 ======-->
     <div id="scrollUp" title="Scroll To Top">
@@ -23,17 +403,849 @@ import PageTitle from "../components/pageTitle.astro";
 
     <!-- 页面标题 -->
     <PageTitle
-      title="新闻动态" 
-      parentPage="首页" 
-      parentUrl="/" 
-      currentPage="新闻动态" 
+        title="新闻动态"
+        parentPage="首页"
+        parentUrl="/"
+        currentPage="新闻动态"
     />
 
     <class class="main overflow-hidden">
 
-    
+
+        <!-- 空白 -->
+        <div style="height: 15vh;"></div>
+
+
+        <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-7">
+                        <!-- Section Heading -->
+                        <div class="section-heading text-center">
+                            <h2>新闻</h2>
+                            <p class="d-none d-sm-block mt-4">新闻、政策发布与解读</p>
+                            <p class="d-block d-sm-none mt-4"></p>
+                        </div>
+                    </div>
+                </div>
+
+        <div class="news-container">
+            <div class="news-container-left">
+                <!-- 快讯，新闻列表 -->
+                <div class="news-container-left-list">
+                    <h3>最新新闻</h3>
+                    {
+                        newsData.map((item) => (
+                            <a
+                                href={item.link}
+                                class="sidebar-news-item"
+                                key={item.id}
+                            >
+                                <span class="sidebar-news-title">
+                                    {item.title}
+                                </span>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="news-container-right">
+                <!-- 轮播图 -->
+                <div class="news-container-right-slideshow">
+                    <div class="slideshow-container">
+                        {newsData.slice(0, 10).map((item, index) => (
+                            <div class={`slide ${index === 0 ? 'active' : ''}`} key={item.id}>
+                                <img src={item.image} alt={item.title} />
+                                <div class="news-container-right-slideshow-text">
+                                    <div class="news-container-right-slideshow-text-title">
+                                        {item.title}
+                                    </div>
+                                    <div class="news-container-right-slideshow-text-content">
+                                        {item.summary}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div class="slideshow-controls">
+                        <button class="prev-btn" id="prevBtn">❮</button>
+                        <button class="next-btn" id="nextBtn">❯</button>
+                    </div>
+                    <div class="slideshow-dots">
+                        {newsData.slice(0, 10).map((_, index) => (
+                            <span 
+                                class={`dot ${index === 0 ? 'active' : ''}`} 
+                                key={index}
+                                data-index={index + 1}
+                            ></span>
+                        ))}
+                    </div>
+                </div>
+
+                <!-- 新闻分类按钮 -->
+                <div class="news-category-buttons">
+                    <button class="category-btn active" data-category="全部"
+                        >全部</button
+                    >
+                    <button class="category-btn" data-category="综合新闻"
+                        >综合新闻</button
+                    >
+                    <button class="category-btn" data-category="政策发布与解读"
+                        >政策发布与解读</button
+                    >
+                </div>
+
+                <!-- 新闻列表 -->
+                <div class="news-list-container">
+                    {
+                        newsData.map((item) => (
+                            <div
+                                class={`news-item ${item.category.replace(" ", "-")}`}
+                                key={item.id}
+                                data-category={item.category}
+                            >
+                                <a class="news-item-content" href={item.link}>
+                                    <img
+                                        src={item.image}
+                                        alt={item.title}
+                                        class="news-item-image"
+                                    />
+                                    <div class="news-item-text">
+                                        <h3>{item.title}</h3>
+                                        <p>{item.summary}</p>
+                                        <span class="news-date">
+                                            {item.date}
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <!-- 分页按钮 -->
+                <div class="pagination-container">
+                    <button class="pagination-btn prev-btn" data-page="prev"
+                        >上一页</button
+                    >
+                    <button class="pagination-btn page-btn active" data-page="1"
+                        >1</button
+                    >
+                    <button class="pagination-btn page-btn" data-page="2"
+                        >2</button
+                    >
+                    <button class="pagination-btn page-btn" data-page="3"
+                        >3</button
+                    >
+                    <button class="pagination-btn next-btn" data-page="next"
+                        >下一页</button
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** 活动开始***** -->
+        <section id="portfolio" class="portfolio-area overflow-hidden ptb_100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-7">
+                        <!-- Section Heading -->
+                        <div class="section-heading text-center">
+                            <h2>活动</h2>
+                            <p class="d-none d-sm-block mt-4">活动通知与精彩回顾</p>
+                            <p class="d-block d-sm-none mt-4">活动信息</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center text-center">
+                    <div class="col-12">
+                        <!-- Portfolio Menu -->
+                        <div
+                            class="portfolio-menu btn-group btn-group-toggle flex-wrap justify-content-center text-center mb-4 mb-md-5"
+                            data-toggle="buttons"
+                        >
+                            <label
+                                class="btn active d-table text-uppercase p-2"
+                            >
+                                <input
+                                    type="radio"
+                                    value="all"
+                                    checked
+                                    class="portfolio-btn"
+                                />
+                                <span>全部</span>
+                            </label>
+                            <label class="btn d-table text-uppercase p-2">
+                                <input
+                                    type="radio"
+                                    value="培训"
+                                    class="portfolio-btn"
+                                />
+                                <span>培训</span>
+                            </label>
+                            <label class="btn d-table text-uppercase p-2">
+                                <input
+                                    type="radio"
+                                    value="路演"
+                                    class="portfolio-btn"
+                                />
+                                <span>路演</span>
+                            </label>
+                            <label class="btn d-table text-uppercase p-2">
+                                <input
+                                    type="radio"
+                                    value="论坛"
+                                    class="portfolio-btn"
+                                />
+                                <span>论坛</span>
+                            </label>
+                            <label class="btn d-table text-uppercase p-2">
+                                <input
+                                    type="radio"
+                                    value="精彩回顾"
+                                    class="portfolio-btn"
+                                />
+                                <span>精彩回顾</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- Portfolio Items -->
+                <div class="row items portfolio-items">
+                    
+                    {
+                        
+
+                        allEvents.slice(0,9).map((item) => (
+                            
+                        
+                            
+                            <div
+                                class={`col-12 col-sm-6 col-lg-4 portfolio-item ${item.category}`}
+                                data-groups={`["${item.category}"]`}
+                                key={`${item.type.toLowerCase()}-${item.id}`}
+                            >
+
+                                {/* <!-- Single Case Studies --> */}
+                                <div class="single-case-studies">
+                                    {/* <!-- Case Studies Thumb --> */}
+                                    <a href={item.link}>
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                        />
+                                        <div className="case-studies-overlay">
+                                            <div className="case-studies-content">
+                                                <h4>{item.title}</h4>
+                                                <span>{item.summary}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    {/* <!-- Case Studies Overlay --> */}
+                                    <a href={item.link} class="case-studies-overlay">
+                                        {/* <!-- Overlay Text --> */}
+                                        <div class="overlay-text text-center p-3">
+                                            <h3 class="text-white mb-3">
+                                                {item.title}
+                                            </h3>
+                                            <p class="text-white">
+                                                {item.summary}
+                                            </p>
+                                            <p class="text-white mt-1">
+                                                {item.date} | {item.type}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                <div class="row justify-content-center">
+                    <a href="/events" class="btn btn-bordered mt-4">获取更多...</a>
+                </div>
+            </div>
+        </section>
+        <!-- ***** 活动结束 ***** -->
     </class>
 
     <!-- 页脚 -->
     <Footer />
 </Layout>
+
+<style>
+    .news-container {
+        margin: 0 auto;
+        width: 75vw;
+        display: flex;
+        flex-direction: row;
+        gap: 2vw;
+    }
+
+    .news-category-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .category-btn {
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fa;
+        cursor: pointer;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .category-btn:hover {
+        background-color: #e9ecef;
+    }
+
+    .category-btn.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .news-container-left {
+        width: 30%;
+        height: auto;
+        background-color: #24da70;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 1vh;
+    }
+
+    .news-container-left-list {
+        width: 100%;
+        height: 100%;
+        background-color: #575757;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow-y: auto;
+    }
+
+    .news-container-left-list h3 {
+        color: white;
+        margin-bottom: 15px;
+        text-align: center;
+        border-bottom: 1px solid #666;
+        padding-bottom: 8px;
+    }
+
+    .sidebar-news-item {
+        display: block;
+        padding: 8px 12px;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid #666;
+        transition: background-color 0.3s ease;
+        font-size: 0.85em;
+        line-height: 1.3;
+    }
+
+    .sidebar-news-item:hover {
+        background-color: #444;
+        padding-left: 15px;
+    }
+
+    .sidebar-news-title {
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    .news-container-right {
+        width: 74%;
+        height: fit-content;
+        background-color: #2600ff;
+        display: flex;
+        flex-direction: column;
+        padding: 1vh;
+    }
+
+    .news-container-right-slideshow {
+        width: 100%;
+        /* height: fit-content; */
+        background-color: #cccccc;
+        position: relative;
+    }
+
+    .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: fit-content;
+        overflow: hidden;
+    }
+
+    .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .news-container-right-slideshow-text {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+    }
+
+    .news-container-right-slideshow-text-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .news-container-right-slideshow-text-content {
+        font-size: 16px;
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+
+    .slideshow-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+    }
+
+    .prev-btn, .next-btn {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .prev-btn:hover, .next-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .slideshow-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .dot {
+        height: 12px;
+        width: 12px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .dot.active {
+        background-color: white;
+    }
+
+    .news-list-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-item {
+        width: 100%;
+        background-color: rgb(118, 211, 79);
+        padding: 0;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+    }
+
+    .news-item-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        height: 17vh;
+    }
+
+    .news-item-image {
+        height: 100%;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+
+    .news-item-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .news-item-text h3 {
+        margin: 0 0 8px 0;
+        padding-top: 10px;
+        font-size: 1.1em;
+    }
+
+    .news-item-text p {
+        margin: 0 0 0 0;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    .news-date {
+        align-self: flex-end;
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    /* 分页容器样式 */
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .pagination-btn {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        background-color: #f8f9fa;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .pagination-btn:hover {
+        background-color: #e9ecef;
+    }
+
+    .pagination-btn.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+
+    .pagination-btn.prev-btn,
+    .pagination-btn.next-btn {
+        background-color: #6c757d;
+        color: white;
+        border-color: #6c757d;
+    }
+
+    .pagination-btn.prev-btn:hover,
+    .pagination-btn.next-btn:hover {
+        background-color: #5a6268;
+    }
+
+    /* 隐藏不符合当前分类的新闻 */
+    .news-item:not(.show) {
+        display: none;
+    }
+    
+    /* 活动区域样式 */
+    .portfolio-area {
+        background-color: #ffffff;
+    }
+    
+    .section-heading h2 {
+        color: #333;
+    }
+    
+    .portfolio-menu .btn {
+        margin: 0 5px;
+        border: 1px solid #007bff;
+        background-color: transparent;
+        color: #007bff;
+    }
+    
+    .portfolio-menu .btn.active {
+        background-color: #007bff;
+        color: white;
+    }
+    /* 标记一下 */
+    .single-case-studies {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+    
+    .single-case-studies:hover {
+        transform: translateY(-5px);
+    }
+    
+    .single-case-studies img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .single-case-studies:hover img {
+        transform: scale(1.05);
+    }
+    
+    .case-studies-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 123, 255, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .single-case-studies:hover .case-studies-overlay {
+        opacity: 1;
+    }
+    
+    .overlay-text {
+        width: 100%;
+    }
+    
+    .btn-bordered {
+        border: 2px solid #007bff;
+        color: #007bff;
+        background-color: transparent;
+        padding: 10px 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-bordered:hover {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+
+<script>
+    // 轮播图功能
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+
+        slides[slideIndex - 1].style.display = 'block';
+        dots[slideIndex - 1].classList.add('active');
+    }
+
+    // 自动轮播
+    setInterval(() => {
+        plusSlides(1);
+    }, 5000); // 每5秒切换一次
+
+    // 添加事件监听器
+    document.addEventListener('DOMContentLoaded', function() {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dots = document.querySelectorAll('.dot');
+
+        prevBtn.addEventListener('click', function() {
+            plusSlides(-1);
+        });
+
+        nextBtn.addEventListener('click', function() {
+            plusSlides(1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                currentSlide(index + 1);
+            });
+        });
+    });
+
+    // 客户端JavaScript实现分类和分页功能
+    document.addEventListener("DOMContentLoaded", function () {
+        const categoryButtons = document.querySelectorAll(".category-btn");
+        const newsItems = document.querySelectorAll(".news-item");
+        const paginationBtns = document.querySelectorAll(".pagination-btn");
+
+        // 分页相关变量
+        let currentPage = 1;
+        const itemsPerPage = 5;
+        let currentCategory = "全部";
+
+        // 默认显示全部新闻的第一页
+        updateNewsDisplay();
+
+        // 为每个分类按钮添加点击事件
+        categoryButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                // 移除所有按钮的active类
+                categoryButtons.forEach((btn) =>
+                    btn.classList.remove("active"),
+                );
+
+                // 为当前按钮添加active类
+                this.classList.add("active");
+
+                // 设置当前分类并重置到第一页
+                currentCategory = this.getAttribute("data-category");
+                currentPage = 1;
+
+                // 更新新闻显示
+                updateNewsDisplay();
+
+                // 更新分页按钮
+                updatePaginationButtons();
+            });
+        });
+
+        // 为分页按钮添加点击事件
+        paginationBtns.forEach((button) => {
+            button.addEventListener("click", function () {
+                const page = this.getAttribute("data-page");
+
+                if (page === "prev" && currentPage > 1) {
+                    currentPage--;
+                } else if (page === "next" && hasNextPage()) {
+                    currentPage++;
+                } else if (!isNaN(page)) {
+                    currentPage = parseInt(page);
+                }
+
+                updateNewsDisplay();
+                updatePaginationButtons();
+            });
+        });
+
+        function updateNewsDisplay() {
+            // 获取当前分类的新闻
+            const filteredItems = Array.from(newsItems).filter((item) => {
+                const itemCategory = item.getAttribute("data-category");
+                return (
+                    currentCategory === "全部" ||
+                    itemCategory === currentCategory
+                );
+            });
+
+            // 计算当前页要显示的新闻
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const itemsToShow = filteredItems.slice(startIndex, endIndex);
+
+            // 隐藏所有新闻
+            newsItems.forEach((item) => {
+                item.style.display = "none";
+            });
+
+            // 显示当前页的新闻
+            itemsToShow.forEach((item) => {
+                item.style.display = "block";
+            });
+        }
+
+        function updatePaginationButtons() {
+            // 更新分页按钮的激活状态
+            paginationBtns.forEach((btn) => {
+                if (btn.classList.contains("page-btn")) {
+                    const pageNum = parseInt(btn.getAttribute("data-page"));
+                    if (pageNum === currentPage) {
+                        btn.classList.add("active");
+                    } else {
+                        btn.classList.remove("active");
+                    }
+                }
+            });
+
+            // 禁用上一页/下一页按钮当没有更多页时
+            const prevBtn = document.querySelector(".prev-btn");
+            const nextBtn = document.querySelector(".next-btn");
+
+            prevBtn.disabled = currentPage <= 1;
+            nextBtn.disabled = !hasNextPage();
+        }
+
+        function hasNextPage() {
+            const filteredItems = Array.from(newsItems).filter((item) => {
+                const itemCategory = item.getAttribute("data-category");
+                return (
+                    currentCategory === "全部" ||
+                    itemCategory === currentCategory
+                );
+            });
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            return endIndex < filteredItems.length;
+        }
+        
+        // 添加活动分类过滤功能
+        const portfolioBtns = document.querySelectorAll('.portfolio-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        portfolioBtns.forEach(btn => {
+            btn.addEventListener('change', function() {
+                const selectedValue = this.value;
+                
+                portfolioItems.forEach(item => {
+                    const itemCategories = JSON.parse(item.getAttribute('data-groups'));
+                    
+                    if (selectedValue === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        // 检查当前项目是否包含所选类别
+                        if (itemCategories.includes(selectedValue)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
