@@ -1,0 +1,187 @@
+---
+// Mission, Vision, Values Component
+export interface Props {
+  mission?: {
+    title: string;
+    description: string;
+    icon?: string;
+  };
+  vision?: {
+    title: string;
+    description: string;
+    icon?: string;
+  };
+  values?: Array<{
+    title: string;
+    description: string;
+    icon?: string;
+  }>;
+}
+
+const { 
+  mission = {
+    title: "我们的使命",
+    description: "占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位占位",
+    icon: "fas fa-bullseye"
+  },
+  vision = {
+    title: "我们的愿景",
+    description: "占位占位占位占位占位占位占位占位占位占位占位占位占位占位",
+    icon: "fas fa-eye"
+  },
+  values = [
+    {
+      title: "占位",
+      description: "占位占位占位占位占位占位占位占位占位",
+      icon: "fas fa-handshake"
+    },
+    {
+      title: "占位",
+      description: "占位占位占位占位占位占位占位占位占位占位占位占位占位占位",
+      icon: "fas fa-lightbulb"
+    },
+    {
+      title: "占位",
+      description: "占位占位占位占位占位占位占位占位占位",
+      icon: "fas fa-trophy"
+    },
+    {
+      title: "占位",
+      description: "占位占位占位占位占位占位占位占位占位占位",
+      icon: "fas fa-users"
+    }
+  ]
+} = Astro.props;
+---
+
+<div class="mission-vision-values-area section-padding-100">
+  <div class="container">
+    <div class="row">
+      <!-- Section Heading -->
+      <div class="col-12">
+        <div class="section-heading text-center mb-5">
+          <h2 class="text-uppercase">我们的核心理念</h2>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Mission -->
+      <div class="col-12 col-md-6 mb-5 mb-lg-0">
+        <div class="card concept-card h-100 shadow-sm border-0">
+          <div class="card-body text-center p-5">
+            <div class="icon-box mb-4">
+              <i class={`fa ${mission.icon || 'fas fa-bullseye'} text-primary fa-3x`}></i>
+            </div>
+            <h4 class="card-title text-uppercase mb-3">{mission.title}</h4>
+            <p class="card-text">{mission.description}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision -->
+      <div class="col-12 col-md-6">
+        <div class="card concept-card h-100 shadow-sm border-0">
+          <div class="card-body text-center p-5">
+            <div class="icon-box mb-4">
+              <i class={`fa ${vision.icon || 'fas fa-eye'} text-primary fa-3x`}></i>
+            </div>
+            <h4 class="card-title text-uppercase mb-3">{vision.title}</h4>
+            <p class="card-text">{vision.description}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Values -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="section-heading text-center mb-5">
+          <h3 class="text-uppercase">核心价值观</h3>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      {values.map((value, index) => (
+        <div class="col-12 col-md-6 col-lg-3 mb-4" key={index}>
+          <div class="card concept-card h-100 shadow-sm border-0 text-center">
+            <div class="card-body p-4">
+              <div class="icon-box mb-3">
+                <i class={`fa ${value.icon} text-primary fa-2x`}></i>
+              </div>
+              <h5 class="card-title text-uppercase mb-3">{value.title}</h5>
+              <p class="card-text">{value.description}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .mission-vision-values-area {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+  }
+
+  .card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .concept-card {
+    background-color: white;
+    color: #333;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+  }
+
+  .icon-box {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 50%;
+    background-color: rgba(37, 117, 252, 0.1);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .card-title {
+    font-weight: 700;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  .line {
+    width: 80px;
+    height: 4px;
+    background-color: #2575fc;
+    margin: 20px auto;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .mission-vision-values-area {
+      padding: 60px 0;
+    }
+    
+    .icon-box {
+      width: 80px;
+      height: 80px;
+      padding: 15px;
+    }
+  }
+</style>
