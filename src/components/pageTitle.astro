@@ -1,0 +1,30 @@
+---
+// src/components/Breadcrumb.astro
+interface Props {
+  title: string;
+  parentPage?: string;
+  parentUrl?: string;
+  currentPage: string;
+}
+
+const { title, parentPage = '首页', parentUrl = '/', currentPage } = Astro.props;
+---
+
+<section class="section breadcrumb-area overlay-dark d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <!-- Breadcrumb Content -->
+        <div class="breadcrumb-content text-center">
+          <h2 class="text-white text-uppercase mb-3">{title}</h2>
+          <ol class="breadcrumb d-flex justify-content-center">
+            <li class="breadcrumb-item">
+              <a class="text-uppercase text-white" href={parentUrl}>{parentPage}</a>
+            </li>
+            <li class="breadcrumb-item text-white active">{currentPage}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
