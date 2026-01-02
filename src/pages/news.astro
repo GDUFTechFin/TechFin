@@ -482,26 +482,26 @@ const allEvents = [
                                         key={item.id}
                                         href={item.link}
                                     >
-                                        <img
+                                        {/* <img
                                             src={item.image}
                                             alt={item.title}
-                                        />
-                                        <div class="news-container-right-slideshow-text">
+                                        /> */}
+                                        {/* <div class="news-container-right-slideshow-text">
                                             <div class="news-container-right-slideshow-text-title">
                                                 {item.title}
                                             </div>
                                             <div class="news-container-right-slideshow-text-content">
                                                 {item.summary}
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </a>
                                 ))
                             }
                         </div>
-                        <div class="slideshow-controls">
+                        <!-- <div class="slideshow-controls">
                             <button class="prev-btn" id="prevBtn">❮</button>
                             <button class="next-btn" id="nextBtn">❯</button>
-                        </div>
+                        </div> -->
                         <div class="slideshow-dots">
                             {
                                 newsData
@@ -910,11 +910,12 @@ const allEvents = [
     }
 
     .slideshow-dots {
+    
         position: absolute;
         bottom: 10px;
         left: 0;
         right: 0;
-        display: flex;
+        display: none;
         justify-content: center;
         gap: 8px;
     }
@@ -954,11 +955,7 @@ const allEvents = [
     }
 
     .news-item-image {
-        height: 100%;
-        object-fit: cover;
-        margin-right: 15px;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+        display: none; /* 隐藏图片 */
     }
 
     .news-item-text {
@@ -967,6 +964,7 @@ const allEvents = [
         flex-direction: column;
         justify-content: center;
         padding: 15px;
+        width: 100%; /* 占据全部宽度，因为没有图片了 */
     }
 
     .news-item-text h3 {
@@ -1199,7 +1197,7 @@ const allEvents = [
 
         // 分页相关变量
         let currentPage = 1;
-        const itemsPerPage = 4;
+        const itemsPerPage = 10;
         let currentCategory = "全部";
 
         // 默认显示全部新闻的第一页
