@@ -660,8 +660,12 @@ img {
   background: -webkit-radial-gradient(
     50% 50%,
     circle closest-side,
+    /* 首页背景颜色 */
     #a57ebf 0%,
     #9c49bf 100%
+    /* #7e7ebf 0%,
+    #494bbf 100% */
+
   );
 }
 

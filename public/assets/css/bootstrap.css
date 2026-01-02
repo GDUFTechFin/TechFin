@@ -7887,7 +7887,8 @@ button.bg-dark:hover {
 
 .justify-content-center {
     -ms-flex-pack: center !important;
-    justify-content: center !important
+    justify-content: center !important;
+    /* background-color: #000; */
 }
 
 .justify-content-between {
@@ -7912,7 +7913,8 @@ button.bg-dark:hover {
 
 .align-items-center {
     -ms-flex-align: center !important;
-    align-items: center !important
+    align-items: center !important;
+    /* background-color: #000; */
 }
 
 .align-items-baseline {
@@ -11445,3 +11447,8 @@ a.text-dark:hover {
 }
 
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+section.breadcrumb-area.overlay-dark.d-flex.align-items-center {
+    background-color: rgba(0, 0, 0, 1);
+}
