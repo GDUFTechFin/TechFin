@@ -663,6 +663,10 @@ img {
     /* 首页背景颜色 */
     #a57ebf 0%,
     #9c49bf 100%
+    /* #9a6bba 0%,
+    #8837aa 100% */
+          /* #9a6bba 0%,
+    #8837aa 100% */
     /* #7e8abf 0%,
     #4968bf 100% */
 
@@ -1096,7 +1100,7 @@ header {
   align-items: center;
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: #e3e7ebf4;
   padding-right: 1rem;
   padding-left: 1rem;
 }
@@ -1271,16 +1275,30 @@ header {
 /* ******************************
 :: 8.0 WELCOME AREA CSS
 ****************************** */
-.welcome-area {
+.welcome-area { 
   height: 800px;
   z-index: 1;
+
 }
 
 .welcome-intro h1 {
-  font-size: 56px;
+  /* font-size: 56px ; */
+  font-size: 9cqw ;
   font-weight: 700;
   line-height: 1em;
   letter-spacing: -1.6px;
+  color: linear-gradient(to right, #DAF8F7, #000000) !important;
+}
+
+
+
+.welcome-intro{
+  /* min-width: 600px; */
+  margin-left: 0px;
+    container-type: inline-size;
+    background-image:linear-gradient(to right, #f3f5e1, #e5e7b1);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .welcome-intro p {
@@ -1291,6 +1309,13 @@ header {
   position: relative;
   display: block;
   width: 100%;
+}
+
+#d-sm-inline-block1{
+
+    background-image:linear-gradient(to right, #f3f5e1, #e5e7b1);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .welcome-thumb-2,
@@ -3016,3 +3041,7 @@ body.dark,
   width: 100%;
 }
 
+.text-white{
+  /*  */
+  font-size: 1.1vw;
+}
