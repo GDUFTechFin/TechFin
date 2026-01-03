@@ -1296,7 +1296,10 @@ header {
   /* min-width: 600px; */
   margin-left: 0px;
     container-type: inline-size;
-    background-image:linear-gradient(to right, #f3f5e1, #e5e7b1);
+    /* background-image:linear-gradient(to right, #f3f5e1, #e5e7b1); */
+    /* background-image:linear-gradient(to right, #f3f5e1,gold); */
+    background-image:linear-gradient(to right, #f3f5e1, rgb(255, 225, 58));
+    /* background-image: gold; */
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1316,6 +1319,7 @@ header {
     background-image:linear-gradient(to right, #f3f5e1, #e5e7b1);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 900;
 }
 
 .welcome-thumb-2,
