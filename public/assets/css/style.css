@@ -3060,3 +3060,7 @@ body.dark,
   /*  */
   font-size: 1.1vw;
 }
+
+.aos-animate{
+  padding: 10px;
+}
